@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Waste Classification</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(
+        135deg,
+        #d9f99d,
+        #86efac,
+        #67e8f9
+    );
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    margin-bottom: 15px;
+}
+
+.card p {
+    margin-bottom: 25px;
+}
+
+input {
+    margin: 20px 0;
+    padding: 10px;
+    width: 100%;
+}
+
+button {
+    padding: 12px 25px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #16a34a;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background: #15803d;
+}
+
+.result {
+    margin-top: 30px;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    background: #f0fdf4;
+}
+
+.result h3 {
+    margin: 10px;
+
+    font-size: 28px;
+}
+</style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>♻️ Waste Classification</h1>
+
+            <p>
+                Upload a waste image to identify its category
+            </p>
+
+            <form
+                action="/predict"
+                method="POST"
+                enctype="multipart/form-data">
+
+                <input
+                    type="file"
+                    name="waste"
+                    accept="image/*"
+                    required>
+
+                <button type="submit">
+                    Predict Waste
+                </button>
+
+            </form>
+
+
+            {% if prediction %}
+
+            <div class="result">
+
+                <h2>Prediction</h2>
+
+                <h3>{{ prediction }}</h3>
+
+                <p>
+                    Confidence:
+                    <strong>{{ confidence }}%</strong>
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
