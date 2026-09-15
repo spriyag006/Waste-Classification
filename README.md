@@ -51,8 +51,9 @@ http://127.0.0.1:5000
 
 ## 🔗 GitHub
 
-Live : (https://github.com/spriyag006/Waste-Classification)
+github : (https://github.com/spriyag006/Waste-Classification)
 
+live : https://waste-classification-h5jc.onrender.com
 ## 👩‍💻 Author
 
 **Sangeetha Priya**
